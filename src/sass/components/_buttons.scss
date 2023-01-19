@@ -18,20 +18,19 @@
   outline: none;
 
   transition: background-color var(--typical-hover-transition),
-  color var(--typical-hover-transition),
-  transform var(--typical-hover-transition);
+    color var(--typical-hover-transition),
+    transform var(--typical-hover-transition);
 
   filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
 
-
-  
   &:hover {
     background-color: var(--btn-text-light-color);
     color: var(--active-btn-color);
     transform: translateY(-2px);
   }
 
-  &:focus,&:active {
+  &:focus,
+  &:active {
     transform: translateY(1px);
     color: var(--btn-text-dark-color);
   }
@@ -43,8 +42,9 @@
   border-style: solid;
 
   background-color: transparent;
-    transition: background-color var(--typical-hover-transition), color var(--typical-hover-transition),
-  border-color var(--typical-hover-transition);
+  transition: background-color var(--typical-hover-transition),
+    color var(--typical-hover-transition),
+    border-color var(--typical-hover-transition);
 
   &:hover {
     background-color: transparent;
@@ -52,22 +52,21 @@
     color: var(--active-btn-color);
   }
 
-  &:focus {    
+  &:focus {
     color: var(--btn-text-dark-color);
   }
 }
 
 .btn-secondary {
-    border-color: var(--btn-text-dark-color);
+  border-color: var(--btn-text-dark-color);
   color: var(--btn-text-dark-color);
   border-style: solid;
 
   background-color: transparent;
 
-  transition: background-color var(--typical-hover-transition), color var(--typical-hover-transition),
-  border-color var(--typical-hover-transition);
-
-  @include transition-triple(border-color, transform);
+  transition: background-color var(--typical-hover-transition),
+    color var(--typical-hover-transition),
+    border-color var(--typical-hover-transition);
 
   &:hover {
     background-color: transparent;
@@ -75,7 +74,7 @@
     color: var(--active-btn-color);
   }
 
-  &:focus {    
+  &:focus {
     color: var(--btn-text-dark-color);
   }
 }
