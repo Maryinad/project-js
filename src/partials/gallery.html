@@ -1,6 +1,6 @@
 <section class="catalog section container">
   <h1 class="visually-hidden">LibraryCatalog</h1>
-  <ul class="card-library">
+  <ul class="card-library" data-modal-open>
     <li class="card-library__item">
       <source srcset="./images/card3.jpg 1x" media="(min-width: 1280px)" />
       <source srcset="./images/card2.jpg 1x" media="(min-width: 768px)" />
@@ -77,4 +77,29 @@
       </div>
     </li>
   </ul>
+</section>
+<!-- <div id="pagination" class="tui-pagination"></div> -->
+<section class="pagination-section">
+  <h2 class="visually-hidden">Pagination</h2>
+  <button class="page-btn previous">
+    <img
+      src="./images/arrow-left.svg"
+      class="arrow previous"
+      alt="arrow previous"
+    />
+  </button>
+  <ul class="pagination-btns">
+    <li class="page is-hidden">1</li>
+    <li class="dots is-hidden">...</li>
+    <li class="page active">1</li>
+    <li class="page">2</li>
+    <li class="page">3</li>
+    <li class="page">4</li>
+    <li class="page">5</li>
+    <li class="dots">...</li>
+    <li class="page">20</li>
+  </ul>
+  <button class="page-btn next">
+    <img src="./images/arrow-left.svg" class="arrow next" alt="arrow next" />
+  </button>
 </section>
