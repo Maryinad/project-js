@@ -1,7 +1,6 @@
 
 
 .backdrop__modal {
-  display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -76,13 +75,14 @@
     position: absolute;
     top: 8px;
     right: 8px;
+    padding: 0;
     width: 30px;
     height: 30px;
     // fill: var(--btn-text-dark-color);
     
     background-color: transparent;
     // border: none;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.0);
     // transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     display: flex;
@@ -94,10 +94,7 @@
     // }
   
   }
-  
-.icon-modal_close{
-  fill: black;
-}
+
 
   .modal__container{
     @media screen and (min-width: 768px){
