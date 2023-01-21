@@ -1,33 +1,52 @@
-.modal {
-  &__btn-close {
-    width: 30px;
-    height: 30px;
-  }
-}
-.modal.modal-team {
-  min-width: 280px;
-  padding: 40px 20px;
+.modal-team-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px 20px;
+  background-color: rgba(0, 0, 0, 0.2);
   overflow-y: scroll;
 
-  @media screen and (min-width: 320px) {
-    width: calc(100% - 20px);
-    max-width: 300px;
-  }
-  @media screen and (min-width: 480px) {
-    min-width: 300px;
-  }
   @media screen and (min-width: 768px) {
-    max-width: 704px;
-    max-height: 600px;
-    padding: 40px 36px;
-    overflow-y: none;
-  }
-  @media screen and (min-width: 1280px) {
-    max-width: 850px;
-    max-height: 700px;
+    padding: 40px 36px 36px;
+    overflow-y: hidden;
   }
 }
+
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 .modal-team {
+  position: relative;
+  min-width: 280px;
+  opacity: 1;
+  transform: scale(1);
+
+  padding: 40px 20px 20px;
+  background-color: #ffffff;
+  transition: scale var(--typical-hover-transition),
+    transform var(--typical-hover-transition);
+
+  @media screen and (min-width: 320px) {
+    max-width: 284px;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: 480px) {
+    text-align: center;
+    max-width: 704px;
+  }
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    max-width: 800px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
   &__container {
   }
   &_title {
@@ -46,13 +65,16 @@
     gap: 20px;
   }
   &__item {
-    text-align: center;
+    // text-align: center;
     flex-basis: 350px;
     @media screen and (min-width: 320px) {
-      flex-basis: 450px;
+      flex-basis: 240px;
     }
     @media screen and (min-width: 480px) {
       flex-basis: calc((100% - 1 * 20px) / 2);
+    }
+    @media screen and (min-width: 500px) {
+      flex-basis: calc((100% - 2 * 20px) / 3);
     }
     @media screen and (min-width: 768px) {
       flex-basis: calc((100% - 3 * 20px) / 4);
@@ -77,6 +99,10 @@
     flex-direction: column;
     gap: 5px;
     padding: 10px;
+    justify-content: start;
+    @media screen and (min-width: 590px) {
+      justify-content: center;
+    }
   }
   &__git-link {
     display: flex;
@@ -87,20 +113,28 @@
   }
   &__icon {
     fill: var(--accent-text-color);
+    display: none;
+    @media screen and (min-width: 480px) {
+      display: block;
+    }
   }
   &__position {
     font-weight: 400;
     font-size: 16px;
-    line-height: calc(18 / 10);
+    line-height: calc(16 / 10);
 
     color: var(--primary-text-color);
   }
   &__name {
     font-weight: 500;
-    font-size: 18px;
-    line-height: calc(20 / 15);
+    font-size: 16px;
+    line-height: calc(16 / 15);
 
     color: var(--accent-text-color);
+    @media screen and (min-width: 850px) {
+      font-size: 18px;
+      line-height: calc(18 / 15);
+    }
   }
 }
 img {
