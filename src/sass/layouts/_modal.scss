@@ -55,8 +55,9 @@
   }
   @media screen and (min-width: 480px) {
     max-width: 280px;
-    max-height: 940px;
-    overflow-y: scroll;
+    // max-height: 940px;
+    // padding: 40px 72px 40px 36px;
+    // overflow-y: scroll;
 
     position: absolute;
     top: 50%;
