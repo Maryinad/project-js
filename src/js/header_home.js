@@ -1,6 +1,7 @@
 'use strict';
 
 import { FilmAPI } from './filmApi';
+import Notiflix from 'notiflix';
 
 headerFormEl = document.querySelector('.header__form');
 headerInputEl = document.querySelector('.header__input');
@@ -24,13 +25,19 @@ function onSearchClick(event) {
     searchFieldMessage.textContent = `Please write something in the box!`;
     return;
   }
+  console.log(10);
 
+  Notiflix.Loading.pulse({
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    svgColor: '#ff6b08',
+  });
   filmApi.fetchFilmsByQuery().then(data => {
     if (data.total_results === 0) {
       searchFieldMessage.textContent = '';
       headerWarningMessage.textContent = `Search result not successful. Enter the correct movie name and `;
       return;
     }
+    Notiflix.Loading.remove(3023);
   });
 
   event.currentTarget.elements.searchQuery.value = '';
