@@ -3,11 +3,12 @@
 import { FilmAPI } from './filmApi';
 import Notiflix from 'notiflix';
 
-headerFormEl = document.querySelector('.header__form');
-headerInputEl = document.querySelector('.header__input');
-headerFormBtn = document.querySelector('.btn_search');
-headerWarningMessage = document.querySelector('.header__warning');
-searchFieldMessage = document.querySelector('.js_search_results');
+const headerFormEl = document.querySelector('.header__form');
+console.log('look', headerFormEl);
+const headerInputEl = document.querySelector('.header__input');
+const headerFormBtn = document.querySelector('.btn_search');
+const headerWarningMessage = document.querySelector('.header__warning');
+const searchFieldMessage = document.querySelector('.js_search_results');
 
 const filmApi = new FilmAPI();
 

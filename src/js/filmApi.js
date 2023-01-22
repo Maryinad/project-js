@@ -24,6 +24,7 @@ export class FilmAPI {
     );
     return response.data.genres;
   }
+
   async fetchTrendingFilms() {
     const params = {
       params: {

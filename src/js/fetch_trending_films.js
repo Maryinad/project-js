@@ -3,6 +3,7 @@ import { markupFilmCard } from './filmCardMarkUp';
 
 const galleryEl = document.querySelector('.card-library');
 const filmApi = new FilmAPI();
+console.log(filmApi);
 
 // const data = filmApi.fetchTrendingFilms().then(data => {
 //   galleryEl.insertAdjacentHTML('beforeend', markupFilmCard(data.results));
