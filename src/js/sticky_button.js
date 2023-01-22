@@ -2,9 +2,9 @@ const stickyBtn = document.querySelector('.sticky');
 
 function checkHeight() {
   if (window.scrollY > 200) {
-    stickyBtn.style.display = 'block';
+    stickyBtn.classList.remove('visually-hidden');
   } else {
-    stickyBtn.style.display = 'none';
+    stickyBtn.classList.add('visually-hidden');
   }
 }
 stickyBtn.addEventListener('click', () => {
