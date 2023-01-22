@@ -187,3 +187,19 @@
     border: none;
     margin-left: 10px;
 }
+
+.header__message {
+    display: block;
+font-size: 14px;
+line-height: 1.17;
+
+color: #FF001B;
+margin-top: 20px;
+}
+
+.header__warning {
+display: flex;
+align-items: center;
+text-align: center;
+justify-content: center;
+}
