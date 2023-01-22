@@ -1,16 +1,14 @@
-export const markupInfoFilm = (array) => {
+export const markupFilmCard = function(array){
     return array.map(film => {
-        const { webImageURL,
-            title,
-            genres = [],
-            year,
-            rate          
-        } = film;
-        return `
-  <section class="catalog section container">
-  <ul class="card-library">
+      const { webImageURL,
+        title,
+        genres = [],
+        year,
+        rate
+      } = film;
+        return `  
     <li class="card-library__item">
-      <img class="card-library__photo" src="${webImageURL}" alt="${title}" width = "280" height = "402" />
+      <img class="card-library__photo" src="${webImageURL}" alt="${title}"/>
       <div class="card-library__wrap">
         <h3 class="card-library__title">"${title}"</h3>
         <div class="card-library__info">
@@ -20,8 +18,7 @@ export const markupInfoFilm = (array) => {
           <span class="card-library__rate">"${rate}"</span>
         </div>
       </div>
-    </li>
-    </ul>
-</section>`
+    </li>`
     }).join(''); 
 }
+
