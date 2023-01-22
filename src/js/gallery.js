@@ -1,5 +1,5 @@
-import { FilmAPI } from "./filmApi";
-import axios from "axios";
+import { FilmAPI } from './filmApi';
+import axios from 'axios';
 
 const filmAPI = new FilmAPI();
 

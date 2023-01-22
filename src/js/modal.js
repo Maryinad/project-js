@@ -41,8 +41,7 @@ function onEscBtnClick(event) {
   }
 }
 function onModalCloseClick() {
-
-    modalEl.classList.add('is-hidden');
+  modalEl.classList.add('is-hidden');
   // body.classList.remove('noScroll');
   modalCloseEl.removeEventListener('click', onModalCloseClick);
   backdropEl.removeEventListener('click', onBackdropElClick);
@@ -52,10 +51,9 @@ function onModalCloseClick() {
 function onModalOpenClick(event) {
   event.preventDefault();
   if (event.target.closest('li')) {
-
-    Notiflix.Loading.pulse( {
+    Notiflix.Loading.pulse({
       backgroundColor: 'rgba(0,0,0,0.8)',
-      svgColor: '#ff6b08'
+      svgColor: '#ff6b08',
     });
 
     modalEl.classList.remove('is-hidden');
@@ -63,7 +61,7 @@ function onModalOpenClick(event) {
     backdropEl.addEventListener('click', onBackdropElClick);
     window.addEventListener('keydown', onEscBtnClick);
 
-        Notiflix.Loading.remove(3023);
+    Notiflix.Loading.remove(3023);
 
     const selectedMovie = event.target.closest('li');
     console.log(selectedMovie);
