@@ -14,5 +14,5 @@ async function fetchTrendingFilms() {
       err => console.log(err);
     } 
 }
-// fetchTrendingFilms();
+//fetchTrendingFilms();
 // где ее вызывать? нужно ли этот файл добавлять в index.js
