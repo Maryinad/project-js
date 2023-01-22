@@ -145,22 +145,14 @@
     display: flex;
 }
 
-// .header-btn-secondary{
-//     color: var(--btn-text-light-color);
-//     border: var(--btn-text-light-color);
-//     outline: solid;
-// }
-
-.modal__button-block {
+.header__button-block {
     display: flex;
     gap: 20px;
     justify-content: center;
 } 
 
 .header__button {
-    // margin: 0 auto;
     width: 130px;
-    // padding: 6px 27px;
     justify-content: center;
     text-align: center;
     text-transform: uppercase;
@@ -174,16 +166,10 @@
         font-size: 14px;
         line-height: calc(17 / 14);
     }
-
-    // &:hover, &:focus {
-    //   background-color: #0A8817;
-    //   color: #FFFFFF;
-    // }
 }
 
 .modal__button-full {
-    // margin-right: 20px;
-    
+
     color: var(--btn-text-light-color);
 
     @media screen and (min-width: 768px) {

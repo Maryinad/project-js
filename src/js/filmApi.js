@@ -36,7 +36,7 @@ export class FilmAPI {
                 query: this.query
             }
         }
-        const response = await axios.get(`${FilmAPI.BASE_URL}/search/movie`, params);
+        const response = await axios.get(`${FilmAPI.BASE_URL}search/movie`, params);
         console.log(response.data);
         return response.data;
     }
