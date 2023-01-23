@@ -51,7 +51,7 @@ function onModalCloseClick() {
 async function onModalOpenClick(event) {
   event.preventDefault();
   bodyEl.classList.add('js-modal-open');
-  console.log('looks', event.target.closest('li'));
+  // console.log('looks', event.target.closest('li'));
   if (event.target.closest('li')) {
     modalEl.classList.remove('is-hidden');
     modalCloseEl.addEventListener('click', onModalCloseClick);
@@ -59,7 +59,7 @@ async function onModalOpenClick(event) {
     window.addEventListener('keydown', onEscBtnClick);
 
     const selectedFilm = event.target.closest('li');
-    console.log('selectedFilm', selectedFilm);
+    // console.log('selectedFilm', selectedFilm);
     const FilmID = selectedFilm.dataset.id;
     console.log('FilmId', FilmID);
 
@@ -71,6 +71,7 @@ async function onModalOpenClick(event) {
     // &&&&&&&&&&&?
     const { data } = await filmAPI.fetchFilmById(FilmID);
     renderFilmCard(data);
+    localStorage.setItem('dataFilm', JSON.stringify(data));
 
     Notiflix.Loading.remove(1000);
   }
