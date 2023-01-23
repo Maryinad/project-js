@@ -1,4 +1,4 @@
-export const markupFilmCard = function (array) {
+export const markupFilmCardHome = function (array) {
   return array
     .map(film => {
       const {
@@ -22,7 +22,6 @@ export const markupFilmCard = function (array) {
         4
       )}"</span>
           </p>
-          <span class="card-library__rate">"${vote_average.toFixed(1)}"</span>
         </div>
       </div>
     </li>`;

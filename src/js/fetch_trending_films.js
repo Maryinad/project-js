@@ -1,5 +1,5 @@
 import { FilmAPI } from './filmApi.js';
-import { markupFilmCard } from './filmCardMarkUp';
+import { markupFilmCardHome } from './filmCardMarkUpHome.js'; 
 import { refs } from './refs.js';
 
 const filmApi = new FilmAPI();
@@ -9,7 +9,7 @@ filmApi
   .fetchTrendingFilms()
   .then(response => {
     // console.log('response', response.data.results);
-    refs.galleryCardLibraryEl.innerHTML = markupFilmCard(response.data.results);
+    refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(response.data.results);
   })
   .catch(err => {
     console.log(err);

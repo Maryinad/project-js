@@ -3,7 +3,7 @@
 import { FilmAPI } from './filmApi';
 import Notiflix from 'notiflix';
 import { refs } from './refs.js';
-import { markupFilmCard } from './filmCardMarkUp';
+import { markupFilmCardHome } from './filmCardMarkUpHome';
 
 const headerFormEl = document.querySelector('.header__form');
 // console.log('look', headerFormEl);
@@ -45,7 +45,7 @@ function onSearchClick(event) {
     } else {
       Notiflix.Loading.remove(2500);
       
-      refs.galleryCardLibraryEl.innerHTML = markupFilmCard(data.results);
+      refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(data.results);
     }
     
   }).catch(err => {
