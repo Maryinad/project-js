@@ -51,6 +51,7 @@ function onModalCloseClick() {
 async function onModalOpenClick(event) {
   event.preventDefault();
   bodyEl.classList.add('js-modal-open');
+  console.log('looks', event.target.closest('li'));
   if (event.target.closest('li')) {
     modalEl.classList.remove('is-hidden');
     modalCloseEl.addEventListener('click', onModalCloseClick);
@@ -58,7 +59,7 @@ async function onModalOpenClick(event) {
     window.addEventListener('keydown', onEscBtnClick);
 
     const selectedFilm = event.target.closest('li');
-    console.dir('selectedFilm', selectedFilm);
+    console.log('selectedFilm', selectedFilm);
     const FilmID = selectedFilm.dataset.id;
     console.log('FilmId', FilmID);
 
