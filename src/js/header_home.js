@@ -16,6 +16,10 @@ const filmApi = new FilmAPI();
 
 headerFormEl.addEventListener('submit', onSearchClick);
 
+// function renderDefaultPhoto() {
+//   return '<img src="./images/popcorn.svg-min.png" alt="popcorn picture" width="600">';
+// }
+
 async function onSearchClick(event) {
   event.preventDefault();
   filmApi.query = event.currentTarget.elements.searchQuery.value
@@ -38,6 +42,8 @@ async function onSearchClick(event) {
     if (data.total_results === 0) {
       Notiflix.Loading.remove(300);
       searchFieldMessage.textContent = '';
+      // const def = renderDefaultPhoto();
+      // refs.galleryCardLibraryEl.innerHTML = def;
       refs.galleryCardLibraryEl.innerHTML = '';
       headerWarningMessage.textContent = `Search result not successful. Enter the correct movie name and `;
       return;
