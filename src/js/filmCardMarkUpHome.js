@@ -1,19 +1,4 @@
-
-export const markupFilmCardHome = function (array,genresArray) {
-//  function prepareObject(array) {
-//   let newArr = array.map(el => el.name);
-//   let filmGenres = '';
-
-//   if (newArr.length < 4) {
-//     filmGenres = newArr.join(', ');
-//   }
-//   if (newArr.length >= 4) {
-//     filmGenres = newArr.slice(0, 2).join(', ') + ', Other';
-//   }
-//   return filmGenres;
-// }
-
-
+export const markupFilmCardHome = function (array, genresArray) {
   return array
     .map(film => {
       const {
@@ -27,13 +12,23 @@ export const markupFilmCardHome = function (array,genresArray) {
       } = film;
 
       const genres = genre_ids.map(genre_id => {
-        const elem = genresArray.find(el => el.id === genre_id)
-      
-        
-        
-        return elem.name
-      })
+        const elem = genresArray.find(el => el.id === genre_id);
 
+        return elem.name;
+      });
+
+      function prepareObject(array) {
+        let filmGenres = '';
+
+        if (array.length < 3) {
+          filmGenres = array.join(', ');
+        }
+        if (array.length >= 3) {
+          filmGenres = array.slice(0, 2).join(', ') + ', Other';
+        }
+        return filmGenres;
+      }
+      let filmGenres = prepareObject(genres);
 
       return `  
     <li class="card-library__item" data-id="${id}">
@@ -42,7 +37,7 @@ export const markupFilmCardHome = function (array,genresArray) {
         <h3 class="card-library__title">${original_title}</h3>
         <div class="card-library__info">
           <p class="card-library__text">
-            ${genres} | <span class="card-library__year">${release_date.slice(
+            ${filmGenres} | <span class="card-library__year">${release_date.slice(
         0,
         4
       )}</span>

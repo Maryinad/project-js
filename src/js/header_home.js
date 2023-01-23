@@ -34,19 +34,6 @@ async function onSearchClick(event) {
     svgColor: '#ff6b08',
   });
 
-  // function prepareObject(array) {
-  //   let newArr = array.map(el => el.name);
-  //     let filmGenres = '';
-
-  //   if (newArr.length <= 3) {
-  //   filmGenres = newArr.join(', ');
-  //     }
-  //   if (newArr.length > 3) {
-  //   filmGenres = newArr.slice(0, 1).join(', ') + ', Other';
-  //     }
-  //   return filmGenres;
-  //     }
-
   filmApi.fetchFilmsByQuery().then(async data => {
     if (data.total_results === 0) {
       Notiflix.Loading.remove(300);
@@ -59,9 +46,6 @@ async function onSearchClick(event) {
       Notiflix.Loading.remove(2500);
       
       const genresArray = await filmApi.getGenresList();
-
-      // let filmGenres = prepareObject(genresArray);
-      
       refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(data.results,genresArray);
     }
     
