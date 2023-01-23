@@ -1,3 +1,4 @@
+<header class="header">
 <section class="header">
   <div class="container">
     <div class="header__containe">
@@ -19,19 +20,22 @@
         </ul>
       </nav>
       <div class="header__container-form">
-        <form class="header__form">
+        <form class="header__form ">
 
-          <input type="text" class="header__input" name="searchQuery" placeholder="Movie search" />
+          <input type="text" class="header__input js-header__input" name="searchQuery" placeholder="Movie search" />
 
 
-          <button class="btn_search" type="submit">
+          <button class="btn_search js-btn_search" type="submit">
 
             <svg class="header__icon-search" width="12" height="12">
               <use href="./images/global-icons/symbol-defs.svg#icon-search"></use>
             </svg>
           </button>
         </form>
+      </div>
+      <div class="header__message">
         <div class="header__warning"></div>
+        <div class="js_search_results header__warning"></div>
       </div>
     </div>
 
