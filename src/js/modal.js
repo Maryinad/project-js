@@ -1,5 +1,9 @@
 import Notiflix from 'notiflix';
 import { FilmAPI } from './filmApi';
+
+import { onWatchedModalBtnClick } from './local_storage';
+import { onQueueModalBtnClick } from './local_storage';
+
 // import { numberConverter } from './prepare-number';
 // import * as basicLightbox from 'basiclightbox';
 // import 'basiclightbox/dist/basicLightbox.min.css'
@@ -61,7 +65,7 @@ async function onModalOpenClick(event) {
     const selectedFilm = event.target.closest('li');
     // console.log('selectedFilm', selectedFilm);
     const FilmID = selectedFilm.dataset.id;
-    console.log('FilmId', FilmID);
+    // console.log('FilmId', FilmID);
 
     Notiflix.Loading.pulse({
       backgroundColor: 'rgba(0,0,0,0.8)',
@@ -183,7 +187,7 @@ function renderFilmCard(data) {
         </div>
     </div>
     <p class="modal__section">About</p>
-                 
+    
     <p class="modal__text">${overview}</p>
     <div class="modal__button-block">
         <button
@@ -202,8 +206,13 @@ function renderFilmCard(data) {
       </button>
     </div>
   </div>
-
-   `;
+  `;
 
   modalContainerEl.innerHTML = markup;
+
+  const watchedModalBtnEl = document.querySelector('[data-modal-add]');
+  const queueModalBtnEl = document.querySelector('[data-modal-queue]');
+
+  watchedModalBtnEl.addEventListener('click', onWatchedModalBtnClick);
+  queueModalBtnEl.addEventListener('click', onQueueModalBtnClick);
 }
