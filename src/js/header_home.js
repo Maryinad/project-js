@@ -44,15 +44,17 @@ function onSearchClick(event) {
 
     } else {
       Notiflix.Loading.remove(2500);
+      
       refs.galleryCardLibraryEl.innerHTML = markupFilmCard(data.results);
     }
     
   }).catch(err => {
     console.log(err);
   });
-
-  event.currentTarget.elements.searchQuery.value = '';
-  searchFieldMessage.textContent = '';
+      event.currentTarget.elements.searchQuery.value = '';
+      searchFieldMessage.textContent = '';
+      headerWarningMessage.textContent = '';
+  
 }
 
 
