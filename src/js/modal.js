@@ -1,5 +1,9 @@
 import Notiflix from 'notiflix';
 import { FilmAPI } from './filmApi';
+
+import { onWatchedModalBtnClick } from './local_storage';
+import { onQueueModalBtnClick } from './local_storage';
+
 // import { numberConverter } from './prepare-number';
 // import * as basicLightbox from 'basiclightbox';
 // import 'basiclightbox/dist/basicLightbox.min.css'
@@ -51,7 +55,7 @@ function onModalCloseClick() {
 async function onModalOpenClick(event) {
   event.preventDefault();
   bodyEl.classList.add('js-modal-open');
-  console.log('looks', event.target.closest('li'));
+  // console.log('looks', event.target.closest('li'));
   if (event.target.closest('li')) {
     modalEl.classList.remove('is-hidden');
     modalCloseEl.addEventListener('click', onModalCloseClick);
@@ -59,9 +63,9 @@ async function onModalOpenClick(event) {
     window.addEventListener('keydown', onEscBtnClick);
 
     const selectedFilm = event.target.closest('li');
-    console.log('selectedFilm', selectedFilm);
+    // console.log('selectedFilm', selectedFilm);
     const FilmID = selectedFilm.dataset.id;
-    console.log('FilmId', FilmID);
+    // console.log('FilmId', FilmID);
 
     Notiflix.Loading.pulse({
       backgroundColor: 'rgba(0,0,0,0.8)',
@@ -71,6 +75,7 @@ async function onModalOpenClick(event) {
     // &&&&&&&&&&&?
     const { data } = await filmAPI.fetchFilmById(FilmID);
     renderFilmCard(data);
+    localStorage.setItem('dataFilm', JSON.stringify(data));
 
     Notiflix.Loading.remove(1000);
   }
@@ -182,7 +187,7 @@ function renderFilmCard(data) {
         </div>
     </div>
     <p class="modal__section">About</p>
-                 
+    
     <p class="modal__text">${overview}</p>
     <div class="modal__button-block">
         <button
@@ -201,8 +206,13 @@ function renderFilmCard(data) {
       </button>
     </div>
   </div>
-
-   `;
+  `;
 
   modalContainerEl.innerHTML = markup;
+
+  const watchedModalBtnEl = document.querySelector('[data-modal-add]');
+  const queueModalBtnEl = document.querySelector('[data-modal-queue]');
+
+  watchedModalBtnEl.addEventListener('click', onWatchedModalBtnClick);
+  queueModalBtnEl.addEventListener('click', onQueueModalBtnClick);
 }
