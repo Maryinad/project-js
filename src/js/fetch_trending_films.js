@@ -1,9 +1,19 @@
-import { FilmAPI } from './filmApi';
+import { FilmAPI } from './filmApi.js';
 import { markupFilmCard } from './filmCardMarkUp';
+import { refs } from './refs.js';
 
-const galleryEl = document.querySelector('.card-library');
 const filmApi = new FilmAPI();
-console.log(filmApi);
+// console.log('filmApi', filmApi);
+
+filmApi
+  .fetchTrendingFilms()
+  .then(response => {
+    // console.log('response', response.data.results);
+    refs.galleryCardLibraryEl.innerHTML = markupFilmCard(response.data.results);
+  })
+  .catch(err => {
+    console.log(err);
+  });
 
 // const data = filmApi.fetchTrendingFilms().then(data => {
 //   galleryEl.insertAdjacentHTML('beforeend', markupFilmCard(data.results));

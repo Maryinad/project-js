@@ -25,20 +25,28 @@ export class FilmAPI {
     return response.data.genres;
   }
 
-  async fetchTrendingFilms() {
-    const params = {
+  fetchTrendingFilms() {
+    const searchParams = {
       params: {
-        // _page: this.page,
         api_key: FilmAPI.API_KEY,
       },
     };
-    const response = await axios.get(
-      `${FilmAPI.BASE_URL}trending/movie/week`,
-      params
-    );
-    console.log(response.data);
-    return response.data;
+    return axios.get(`${FilmAPI.BASE_URL}trending/movie/week`, searchParams);
   }
+  // async fetchTrendingFilms() {
+  //   const params = {
+  //     params: {
+  //       // _page: this.page,
+  //       api_key: FilmAPI.API_KEY,
+  //     },
+  //   };
+  //   const response = await axios.get(
+  //     `${FilmAPI.BASE_URL}trending/movie/week`,
+  //     params
+  //   );
+  //   console.log(response.data);
+  //   // return response.data;
+  // }
 
   async fetchFilmsByQuery() {
     const params = {
@@ -52,6 +60,7 @@ export class FilmAPI {
     // console.log(response.data);
     return response.data;
   }
+
   async fetchFilmById(id) {
     const movie_id = id;
     const params = {
