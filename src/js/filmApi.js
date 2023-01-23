@@ -19,7 +19,7 @@ export class FilmAPI {
       },
     };
     const response = await axios.get(
-      `${FilmAPI.BASE_URL}${GENRES_LIST}`,
+      `${FilmAPI.BASE_URL}${FilmAPI.GENRES_LIST}`,
       params
     );
     return response.data.genres;

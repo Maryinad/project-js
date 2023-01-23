@@ -7,9 +7,10 @@ const filmApi = new FilmAPI();
 
 filmApi
   .fetchTrendingFilms()
-  .then(response => {
+  .then(async response => {
     // console.log('response', response.data.results);
-    refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(response.data.results);
+    const genresArray = await filmApi.getGenresList();
+    refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(response.data.results, genresArray);
   })
   .catch(err => {
     console.log(err);

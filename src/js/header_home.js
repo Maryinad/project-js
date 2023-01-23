@@ -16,7 +16,7 @@ const filmApi = new FilmAPI();
 
 headerFormEl.addEventListener('submit', onSearchClick);
 
-function onSearchClick(event) {
+async function onSearchClick(event) {
   event.preventDefault();
   filmApi.query = event.currentTarget.elements.searchQuery.value
     .trim()
@@ -34,7 +34,20 @@ function onSearchClick(event) {
     svgColor: '#ff6b08',
   });
 
-  filmApi.fetchFilmsByQuery().then(data => {
+  // function prepareObject(array) {
+  //   let newArr = array.map(el => el.name);
+  //     let filmGenres = '';
+
+  //   if (newArr.length <= 3) {
+  //   filmGenres = newArr.join(', ');
+  //     }
+  //   if (newArr.length > 3) {
+  //   filmGenres = newArr.slice(0, 1).join(', ') + ', Other';
+  //     }
+  //   return filmGenres;
+  //     }
+
+  filmApi.fetchFilmsByQuery().then(async data => {
     if (data.total_results === 0) {
       Notiflix.Loading.remove(300);
       searchFieldMessage.textContent = '';
@@ -45,7 +58,11 @@ function onSearchClick(event) {
     } else {
       Notiflix.Loading.remove(2500);
       
-      refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(data.results);
+      const genresArray = await filmApi.getGenresList();
+
+      // let filmGenres = prepareObject(genresArray);
+      
+      refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(data.results,genresArray);
     }
     
   }).catch(err => {
