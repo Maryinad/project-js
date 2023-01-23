@@ -9,7 +9,7 @@ const modalCloseEl = document.querySelector('[data-modal-close]');
 const modalEl = document.querySelector('[data-modal]');
 const backdropEl = document.querySelector('.backdrop__modal');
 const modalContainerEl = document.querySelector('.modal__container');
-const body = document.querySelector('body');
+const bodyEl = document.querySelector('body');
 
 const addToWatched = 'Add to Watched';
 const removeFromWatched = 'Remove from Watched';
@@ -29,7 +29,7 @@ const filmAPI = new FilmAPI();
 // ======================================================
 function onBackdropElClick(event) {
   if (event.target === backdropEl) {
-    // body.classList.remove('noScroll');
+    bodyEl.classList.remove('js-modal-open');
     onModalCloseClick();
   }
 }
@@ -37,12 +37,12 @@ function onBackdropElClick(event) {
 function onEscBtnClick(event) {
   if (event.code === 'Escape') {
     onModalCloseClick();
-    // body.classList.remove('noScroll');
+    bodyEl.classList.remove('js-modal-open');
   }
 }
 function onModalCloseClick() {
   modalEl.classList.add('is-hidden');
-  // body.classList.remove('noScroll');
+  bodyEl.classList.remove('js-modal-open');
   modalCloseEl.removeEventListener('click', onModalCloseClick);
   backdropEl.removeEventListener('click', onBackdropElClick);
   window.removeEventListener('keydown', onEscBtnClick);
@@ -50,19 +50,18 @@ function onModalCloseClick() {
 // Головна функція-обробник появи модального вікна
 async function onModalOpenClick(event) {
   event.preventDefault();
+  bodyEl.classList.add('js-modal-open');
   if (event.target.closest('li')) {
-    
     modalEl.classList.remove('is-hidden');
     modalCloseEl.addEventListener('click', onModalCloseClick);
     backdropEl.addEventListener('click', onBackdropElClick);
     window.addEventListener('keydown', onEscBtnClick);
 
     const selectedFilm = event.target.closest('li');
-    console.log(selectedFilm);
-    const FilmID = selectedFilm.dataset.movieid;
+    console.dir('selectedFilm', selectedFilm);
+    const FilmID = selectedFilm.dataset.id;
+    console.log('FilmId', FilmID);
 
-
-    
     Notiflix.Loading.pulse({
       backgroundColor: 'rgba(0,0,0,0.8)',
       svgColor: '#ff6b08',
@@ -72,8 +71,7 @@ async function onModalOpenClick(event) {
     const { data } = await filmAPI.fetchFilmById(FilmID);
     renderFilmCard(data);
 
-    Notiflix.Loading.remove(3023);
-
+    Notiflix.Loading.remove(1000);
   }
 }
 
@@ -203,12 +201,7 @@ function renderFilmCard(data) {
     </div>
   </div>
 
-      //   <button class="button button__orange" id="watched" data-watched="false">add to Watched</button>
-      //   <button class="button button__transparent" id="queued" data-queued="false">add to queue</button>
-      // </div>
-      // <button class="trailer-link">
-      // watch trailer</button>
-      //   </div>`;
+   `;
 
   modalContainerEl.innerHTML = markup;
 }

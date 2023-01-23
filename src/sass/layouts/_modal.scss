@@ -94,9 +94,10 @@
   justify-content: center;
   align-items: center;
 
-  // &:hover, &:focus {
-  //   fill: #F8D24E;
-  // }
+  &:hover,
+  &:focus {
+    stroke: var(--active-btn-color);
+  }
 }
 
 .modal__container {
@@ -280,5 +281,3 @@
     // margin-right: 15px;
   }
 }
-
-

@@ -23,6 +23,7 @@ function onEscBtnClick(evt) {
   }
 }
 function onCloseModalClick(evt) {
+  bodyEl.classList.remove('js-modal-open');
   backdropTeamEl.classList.add('is-hidden');
   backdropTeamEl.removeEventListener('click', onBackdropTeamClick);
   closeModalBtn.removeEventListener('click', onCloseModalClick);
