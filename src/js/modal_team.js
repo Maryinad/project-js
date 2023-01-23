@@ -1,6 +1,5 @@
 'use strict';
 const openModalBtn = document.querySelector('[data-modal-team-open]');
-console.log('look btn', openModalBtn);
 const closeModalBtn = document.querySelector('[data-modal-team-close]');
 const backdropTeamEl = document.querySelector('[data-modal-team]');
 const bodyEl = document.querySelector('body');
