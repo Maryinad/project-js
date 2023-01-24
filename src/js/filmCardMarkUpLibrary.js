@@ -1,6 +1,4 @@
-import defaultPhoto from '../images/default-photo.jpeg';
-
-export const markupFilmCardHome = function (array, genresArray) {
+export const markupFilmCardLibrary = function (array, genresArray) {
   return array
     .map(film => {
       const {
@@ -32,31 +30,11 @@ export const markupFilmCardHome = function (array, genresArray) {
       }
       let filmGenres = prepareObject(genres);
 
-
-    let posterPath = '';
-    const defaultImg = defaultPhoto;
-
-      if (poster_path !== null) {
-      posterPath = `https://image.tmdb.org/t/p/original/${poster_path}`;
-      } else {
-        posterPath = defaultImg;
-      }
-
-      function sliceTitle(title) {
-        let titleShow = '';
-      if (original_title.length < 25) {
-      titleShow = original_title
-      } else {
-        titleShow = original_title.slice(0, 25) + '...'
-        }
-        return titleShow
-}
-
       return `  
     <li class="card-library__item" data-id="${id}">
-      <img class="card-library__photo" src="${posterPath}" alt=${sliceTitle(original_title)} width="395"/>
+      <img class="card-library__photo" src="https://image.tmdb.org/t/p/original/${poster_path}" alt=${original_title} width="395"/>
       <div class="card-library__wrap">
-        <h3 class="card-library__title">${sliceTitle(original_title)}</h3>
+        <h3 class="card-library__title">${original_title}</h3>
         <div class="card-library__info">
           <p class="card-library__text">
             ${filmGenres} | <span class="card-library__year">${release_date.slice(
@@ -64,6 +42,7 @@ export const markupFilmCardHome = function (array, genresArray) {
         4
       )}</span>
           </p>
+          <span class="card-library__rate">"${vote_average.toFixed(1)}"</span>
         </div>
       </div>
     </li>`;
