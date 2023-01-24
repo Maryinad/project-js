@@ -23,4 +23,7 @@
     border-color: var(--active-btn-color);
     background-color: rgb(255, 107, 1, 0.2);
   }
+  &__icon {
+    fill: rgb(255, 107, 1, 0.7);
+  }
 }

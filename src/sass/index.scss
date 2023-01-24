@@ -1,5 +1,6 @@
 @import './common';
 @import './example';
+// @import './layouts/dark_light';
 
 @import './utils/vars';
 @import './utils/visually-hidden';
@@ -7,6 +8,7 @@
 
 @import './base/reset';
 
+@import './components/cursor';
 @import './components/container';
 @import './components/buttons';
 @import './components/sticky_button';
