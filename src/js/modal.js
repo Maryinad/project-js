@@ -2,6 +2,7 @@ import Notiflix from 'notiflix';
 import { FilmAPI } from './filmApi';
 
 import { rerenderWatchedLib } from './watchedList';
+import { rerenderQueueLib } from './queueList';
 
 import { onWatchedModalBtnClick } from './local_storage';
 import { onQueueModalBtnClick } from './local_storage';
@@ -55,13 +56,13 @@ function onModalCloseClick() {
   backdropEl.removeEventListener('click', onBackdropElClick);
   window.removeEventListener('keydown', onEscBtnClick);
 
-  // if()
-  // rerenderWatchedLib();
+  if (window.location.pathname === '/library.html') {
+    rerenderWatchedLib();
+    rerenderQueueLib();
+  }
 }
 // Головна функція-обробник появи модального вікна
 async function onModalOpenClick(event) {
-  console.dir(document);
-
   event.preventDefault();
   bodyEl.classList.add('js-modal-open');
   // console.log('looks', event.target.closest('li'));
@@ -72,9 +73,8 @@ async function onModalOpenClick(event) {
     window.addEventListener('keydown', onEscBtnClick);
 
     const selectedFilm = event.target.closest('li');
-    // console.log('selectedFilm', selectedFilm);
     const FilmID = selectedFilm.dataset.id;
-    // console.log('FilmId', FilmID);
+    
 
     Notiflix.Loading.pulse({
       backgroundColor: 'rgba(0,0,0,0.8)',
@@ -137,7 +137,6 @@ function numberConverter(number) {
 }
 
 function renderFilmCard(data) {
-  // console.log(data);
   let posterPath = '';
   const defaultImg = defaultPhoto;
 
@@ -227,20 +226,21 @@ function renderFilmCard(data) {
   queueModalBtnEl.addEventListener('click', onQueueModalBtnClick);
 
   const filmID = data.id;
-  console.log(filmID);
   const isWatched = watchedParsedList.find(({ id }) => id === filmID);
-  console.log(watchedModalBtnEl);
-    if (!isWatched) {
-      watchedModalBtnEl.textContent = 'Add to watched';
-    } else {
-      watchedModalBtnEl.textContent = 'Remove from watched';
+
+  // watchedModalBtnEl.textContent = !isWatched ? 'Add to watched' : 'Remove from watched';
+  if (!isWatched) {
+    watchedModalBtnEl.textContent = 'Add to watched';
+  } else {
+    watchedModalBtnEl.textContent = 'Remove from watched';
   }
   
   const isQueue = queueParsedList.find(({id}) => id === filmID);
     
-    if (!isQueue) {
-      queueModalBtnEl.textContent = 'Add to queue';
-    } else {
-      queueModalBtnEl.textContent = 'Remove from queue';
+  // queueModalBtnEl.textContent = !isQueue ? 'Add to queue' : 'Remove from queue';
+  if (!isQueue) {
+    queueModalBtnEl.textContent = 'Add to queue';
+  } else {
+    queueModalBtnEl.textContent = 'Remove from queue';
   }
 }
