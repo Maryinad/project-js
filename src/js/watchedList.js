@@ -15,7 +15,7 @@ export function rerenderWatchedLib() {
   const watchedParsedList = JSON.parse(watchedSavedList) || [];
 
   if (watchedParsedList.length === 0) {
-    // refs.myLibraryGalleryEl.textContent = 'Opps... nothing here';
+    // refs.myLibraryGalleryEl.innerHTML  = 'Opps... nothing here';
     refs.myLibraryGalleryEl.innerHTML = renderDefaultWatchedNotification();
     console.log('ul', refs.myLibraryGalleryEl);
     return;
