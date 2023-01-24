@@ -10,4 +10,5 @@ import './js/modal';
 import './js/modal_team';
 import './js/sticky_button';
 import './js/pagination';
+import './js/dark_light';
 import './js/local_storage';
