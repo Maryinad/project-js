@@ -1,12 +1,12 @@
 let watchedSavedList = localStorage.getItem('watchedList');
 let queueSavedList = localStorage.getItem('queueList');
 
-const watchedParsedList = JSON.parse(watchedSavedList) || [];
-const queueParsedList = JSON.parse(queueSavedList) || [];
+export const watchedParsedList = JSON.parse(watchedSavedList) || [];
+export const queueParsedList = JSON.parse(queueSavedList) || [];
 
 export function onWatchedModalBtnClick(evt) {
     
-    const watchedModalBtnEl = document.querySelector('[data-modal-add]');
+    const watchedModalBtnEl = document.querySelector('[data-modal] [data-modal-add]');
     const dataFilmInfo = JSON.parse(localStorage.getItem('dataFilm'));
     
     const filmID = dataFilmInfo.id;
@@ -24,8 +24,8 @@ export function onWatchedModalBtnClick(evt) {
 }
 
 export function onQueueModalBtnClick(evt) {
-    const queueModalBtnEl = document.querySelector('[data-modal-queue]');
-    console.log('слушаю кнопку queue');
+    const queueModalBtnEl = document.querySelector('[data-modal] [data-modal-queue]');
+    
     const dataFilmInfo = JSON.parse(localStorage.getItem('dataFilm'));
     const filmID = dataFilmInfo.id;
     
