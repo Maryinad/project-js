@@ -1,4 +1,12 @@
-export const markupFilmCardLibrary = function (array, genresArray) {
+export const markupFilmCardLibrary = function (array) {
+  function getGenr(array) {
+    return array
+      .map(el => el.genres
+      .map(genre => genre.name)
+    );
+  }
+  
+
   return array
     .map(film => {
       const {
@@ -11,11 +19,14 @@ export const markupFilmCardLibrary = function (array, genresArray) {
         backdrop_path,
       } = film;
 
-      const genres = genre_ids.map(genre_id => {
-        const elem = genresArray.find(el => el.id === genre_id);
+      let genreStr = null;
 
-        return elem.name;
-      });
+      let arrGenres = getGenr(array);
+      // console.log(arrGenres);
+      for (i = 0; i < arrGenres.length; i++){
+        // console.log(arrGenres[i]);
+        genreStr = prepareObject(arrGenres[i]);
+      }
 
       function prepareObject(array) {
         let filmGenres = '';
@@ -28,7 +39,6 @@ export const markupFilmCardLibrary = function (array, genresArray) {
         }
         return filmGenres;
       }
-      let filmGenres = prepareObject(genres);
 
       return `  
     <li class="card-library__item" data-id="${id}">
@@ -37,12 +47,12 @@ export const markupFilmCardLibrary = function (array, genresArray) {
         <h3 class="card-library__title">${original_title}</h3>
         <div class="card-library__info">
           <p class="card-library__text">
-            ${filmGenres} | <span class="card-library__year">${release_date.slice(
+            ${genreStr} | <span class="card-library__year">${release_date.slice(
         0,
         4
       )}</span>
           </p>
-          <span class="card-library__rate">"${vote_average.toFixed(1)}"</span>
+          <span class="card-library__rate">${vote_average.toFixed(1)}</span>
         </div>
       </div>
     </li>`;

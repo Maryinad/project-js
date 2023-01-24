@@ -1,4 +1,4 @@
-import { markupFilmCard } from './filmCardMarkUp';
+import { markupFilmCardLibrary } from './filmCardMarkUpLibrary';
 import { refs } from './refs.js';
 import popcornImgPath from '../images/popcorn.svg-min.png';
 
@@ -16,11 +16,10 @@ export function rerenderQueueLib() {
   const queueParsedList = JSON.parse(queueSavedList) || [];
 
   if (queueParsedList.length === 0) {
-    // refs.myLibraryGalleryEl.innerHTML = 'Opps... nothing here';
     refs.myLibraryGalleryEl.innerHTML = renderDefaultQueueNotification();
     return;
   }
-  refs.myLibraryGalleryEl.innerHTML = markupFilmCard(queueParsedList);
+  refs.myLibraryGalleryEl.innerHTML = markupFilmCardLibrary(queueParsedList);
 }
 function renderDefaultQueueNotification() {
   return `<img src="${popcornImgPath}" alt="popcorn picture" width="150">
