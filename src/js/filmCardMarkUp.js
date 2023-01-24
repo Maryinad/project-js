@@ -10,7 +10,7 @@ export const markupFilmCard = function (array) {
         vote_average,
         backdrop_path,
       } = film;
-      console.log('film', film);
+      // console.log('film', film);
 
       return `  
     <li class="card-library__item" data-id="${id}" >

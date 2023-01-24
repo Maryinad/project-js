@@ -1,26 +1,29 @@
 import { markupFilmCard } from './filmCardMarkUp';
-// import { markupFilmCardHome } from './filmCardMarkUpHome.js';
-// import { markupFilmCardLibrary } from './filmCardMarkUpLibrary';
 import { refs } from './refs.js';
+import popcornImgPath from '../images/popcorn.svg-min.png';
 
-let watchedSavedList = localStorage.getItem('watchedList');
-const watchedParsedList = JSON.parse(watchedSavedList) || [];
-refs.myLibraryGalleryEl.innerHTML = markupFilmCard(watchedParsedList);
-
-refs.btnHeaderWatchedEl.addEventListener('click', onBtnHeaderWatchedClick);
-// console.log('r', refs.btnHeaderWatchedEl);
+if (window.location.pathname === '/library.html') {
+  refs.btnHeaderWatchedEl.addEventListener('click', onBtnHeaderWatchedClick);
+}
 
 function onBtnHeaderWatchedClick() {
+  rerenderWatchedLib();
+}
+
+export function rerenderWatchedLib() {
   let watchedSavedList = localStorage.getItem('watchedList');
   const watchedParsedList = JSON.parse(watchedSavedList) || [];
-  console.log('m', watchedParsedList.length);
+
   if (watchedParsedList.length === 0) {
-    refs.myLibraryGalleryEl.textContent = 'Opps... nothing here';
+    // refs.myLibraryGalleryEl.innerHTML  = 'Opps... nothing here';
+    refs.myLibraryGalleryEl.innerHTML = renderDefaultWatchedNotification();
     console.log('ul', refs.myLibraryGalleryEl);
     return;
   }
-
-  // refs.myLibraryGalleryEl.innerHTML = markupFilmCardHome(watchedParsedList);
   refs.myLibraryGalleryEl.innerHTML = markupFilmCard(watchedParsedList);
-  // refs.myLibraryGalleryEl.innerHTML = markupFilmCardLibrary(watchedParsedList);
+}
+
+function renderDefaultWatchedNotification() {
+  return `<img src="${popcornImgPath}" alt="popcorn picture" width="150">
+  <p class="notification-library">You haven't added any films to watched...</p>`;
 }

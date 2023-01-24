@@ -1,8 +1,13 @@
 import Notiflix from 'notiflix';
 import { FilmAPI } from './filmApi';
 
+import { rerenderWatchedLib } from './watchedList';
+import { rerenderQueueLib } from './queueList';
+
 import { onWatchedModalBtnClick } from './local_storage';
 import { onQueueModalBtnClick } from './local_storage';
+import { watchedParsedList } from './local_storage';
+import { queueParsedList } from './local_storage';
 
 // import { numberConverter } from './prepare-number';
 // import * as basicLightbox from 'basiclightbox';
@@ -50,6 +55,11 @@ function onModalCloseClick() {
   modalCloseEl.removeEventListener('click', onModalCloseClick);
   backdropEl.removeEventListener('click', onBackdropElClick);
   window.removeEventListener('keydown', onEscBtnClick);
+
+  if (window.location.pathname === '/library.html') {
+    rerenderWatchedLib();
+    rerenderQueueLib();
+  }
 }
 // Головна функція-обробник появи модального вікна
 async function onModalOpenClick(event) {
@@ -63,9 +73,8 @@ async function onModalOpenClick(event) {
     window.addEventListener('keydown', onEscBtnClick);
 
     const selectedFilm = event.target.closest('li');
-    // console.log('selectedFilm', selectedFilm);
     const FilmID = selectedFilm.dataset.id;
-    // console.log('FilmId', FilmID);
+    
 
     Notiflix.Loading.pulse({
       backgroundColor: 'rgba(0,0,0,0.8)',
@@ -210,9 +219,28 @@ function renderFilmCard(data) {
 
   modalContainerEl.innerHTML = markup;
 
-  const watchedModalBtnEl = document.querySelector('[data-modal-add]');
-  const queueModalBtnEl = document.querySelector('[data-modal-queue]');
+  const watchedModalBtnEl = document.querySelector('[data-modal] [data-modal-add]');
+  const queueModalBtnEl = document.querySelector('[data-modal] [data-modal-queue]');
 
   watchedModalBtnEl.addEventListener('click', onWatchedModalBtnClick);
   queueModalBtnEl.addEventListener('click', onQueueModalBtnClick);
+
+  const filmID = data.id;
+  const isWatched = watchedParsedList.find(({ id }) => id === filmID);
+
+  // watchedModalBtnEl.textContent = !isWatched ? 'Add to watched' : 'Remove from watched';
+  if (!isWatched) {
+    watchedModalBtnEl.textContent = 'Add to watched';
+  } else {
+    watchedModalBtnEl.textContent = 'Remove from watched';
+  }
+  
+  const isQueue = queueParsedList.find(({id}) => id === filmID);
+    
+  // queueModalBtnEl.textContent = !isQueue ? 'Add to queue' : 'Remove from queue';
+  if (!isQueue) {
+    queueModalBtnEl.textContent = 'Add to queue';
+  } else {
+    queueModalBtnEl.textContent = 'Remove from queue';
+  }
 }
