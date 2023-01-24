@@ -16,7 +16,6 @@ export function rerenderQueueLib() {
   const queueParsedList = JSON.parse(queueSavedList) || [];
 
   if (queueParsedList.length === 0) {
-    // refs.myLibraryGalleryEl.innerHTML = 'Opps... nothing here';
     refs.myLibraryGalleryEl.innerHTML = renderDefaultQueueNotification();
     return;
   }

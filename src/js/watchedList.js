@@ -17,8 +17,7 @@ function onBtnHeaderWatchedClick() {
 export function rerenderWatchedLib() {
   let watchedSavedList = localStorage.getItem('watchedList');
   const watchedParsedList = JSON.parse(watchedSavedList) || [];
- 
-  //  console.log(watchedParsedList);
+
   if (watchedParsedList.length === 0) {
     
     refs.myLibraryGalleryEl.innerHTML = renderDefaultWatchedNotification();
