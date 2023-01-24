@@ -68,7 +68,7 @@ async function onModalOpenClick(event) {
     // console.log('FilmId', FilmID);
 
     Notiflix.Loading.pulse({
-      backgroundColor: 'rgba(0,0,0,0.8)',
+      backgroundColor: 'rgba(0,0,0,8 )',
       svgColor: '#ff6b08',
     });
 
