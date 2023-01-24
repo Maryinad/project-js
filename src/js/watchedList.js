@@ -2,6 +2,10 @@ import { markupFilmCard } from './filmCardMarkUp';
 import { refs } from './refs.js';
 import popcornImgPath from '../images/popcorn.svg-min.png';
 
+let watchedSavedList = localStorage.getItem('watchedList');
+const watchedParsedList = JSON.parse(watchedSavedList) || [];
+refs.myLibraryGalleryEl.innerHTML = markupFilmCard(watchedParsedList);
+
 if (window.location.pathname === '/library.html') {
   refs.btnHeaderWatchedEl.addEventListener('click', onBtnHeaderWatchedClick);
 }
