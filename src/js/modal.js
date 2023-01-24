@@ -63,6 +63,8 @@ function onModalCloseClick() {
 }
 // Головна функція-обробник появи модального вікна
 async function onModalOpenClick(event) {
+  console.dir(document);
+  console.dir(window);
   event.preventDefault();
   bodyEl.classList.add('js-modal-open');
   // console.log('looks', event.target.closest('li'));

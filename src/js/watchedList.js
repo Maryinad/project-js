@@ -1,4 +1,4 @@
-import { markupFilmCard } from './filmCardMarkUp';
+import { markupFilmCardLibrary } from './filmCardMarkUpLibrary';
 import { refs } from './refs.js';
 import popcornImgPath from '../images/popcorn.svg-min.png';
 
@@ -13,14 +13,15 @@ function onBtnHeaderWatchedClick() {
 export function rerenderWatchedLib() {
   let watchedSavedList = localStorage.getItem('watchedList');
   const watchedParsedList = JSON.parse(watchedSavedList) || [];
-
+ 
+  //  console.log(watchedParsedList);
   if (watchedParsedList.length === 0) {
-    // refs.myLibraryGalleryEl.innerHTML  = 'Opps... nothing here';
+    
     refs.myLibraryGalleryEl.innerHTML = renderDefaultWatchedNotification();
     console.log('ul', refs.myLibraryGalleryEl);
     return;
   }
-  refs.myLibraryGalleryEl.innerHTML = markupFilmCard(watchedParsedList);
+  refs.myLibraryGalleryEl.innerHTML = markupFilmCardLibrary(watchedParsedList);
 }
 
 function renderDefaultWatchedNotification() {
