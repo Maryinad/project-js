@@ -1,8 +1,11 @@
 import { markupFilmCard } from './filmCardMarkUp';
 import { refs } from './refs.js';
+import popcornImgPath from '../images/popcorn.svg-min.png';
 
-refs.btnHeaderQueueEl.addEventListener('click', onBtnQueueClick);
 
+if (window.location.pathname === '/library.html') {
+  refs.btnHeaderQueueEl.addEventListener('click', onBtnQueueClick);
+}
 
 function onBtnQueueClick() {
   rerenderQueueLib();
@@ -13,8 +16,13 @@ export function rerenderQueueLib() {
   const queueParsedList = JSON.parse(queueSavedList) || [];
 
   if (queueParsedList.length === 0) {
-    refs.myLibraryGalleryEl.innerHTML = 'Opps... nothing here';
+    // refs.myLibraryGalleryEl.innerHTML = 'Opps... nothing here';
+    refs.myLibraryGalleryEl.innerHTML = renderDefaultQueueNotification();
     return;
   }
   refs.myLibraryGalleryEl.innerHTML = markupFilmCard(queueParsedList);
+}
+function renderDefaultQueueNotification() {
+  return `<img src="${popcornImgPath}" alt="popcorn picture" width="150">
+  <p class="notification-library">You haven't added any films to queue...</p>`;
 }
