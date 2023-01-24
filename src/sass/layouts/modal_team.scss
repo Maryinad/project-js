@@ -135,15 +135,17 @@
 
 .team-member {
   &__photo {
-    width: 100%;
+    width: 250px;
     height: 340px;
     background-color: var(--page--bg-color);
 
     @media screen and (min-width: 768px) {
+      width: 109px;
       height: 156px;
     }
 
     @media screen and (min-width: 1280px) {
+      width: 116px;
       height: 167px;
     }
   }
