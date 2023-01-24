@@ -97,7 +97,7 @@
 
 // Pagination section
 
-.pagination-section {
+#pagination {
   max-width: 1280px;
   margin-right: auto;
   margin-left: auto;
@@ -128,7 +128,7 @@
   cursor: pointer;
 }
 
-.page {
+.tui-page-btn {
   display: inline-block;
   padding: 8px;
   font-weight: 500;
@@ -137,11 +137,11 @@
   transition: all 0.2s ease-in-out;
 }
 
-.page:hover {
+.tui-page-btn:hover {
   transform: scale(140%);
 }
 
-.page.active {
+.tui-page-btn.tui-is-selected {
   display: inline-flex;
   align-items: center;
   justify-content: center;
