@@ -1,8 +1,12 @@
 import Notiflix from 'notiflix';
 import { FilmAPI } from './filmApi';
 
+import { rerenderWatchedLib } from './watchedList';
+
 import { onWatchedModalBtnClick } from './local_storage';
 import { onQueueModalBtnClick } from './local_storage';
+import { watchedParsedList } from './local_storage';
+import { queueParsedList } from './local_storage';
 
 // import { numberConverter } from './prepare-number';
 // import * as basicLightbox from 'basiclightbox';
@@ -50,9 +54,14 @@ function onModalCloseClick() {
   modalCloseEl.removeEventListener('click', onModalCloseClick);
   backdropEl.removeEventListener('click', onBackdropElClick);
   window.removeEventListener('keydown', onEscBtnClick);
+
+  // if()
+  // rerenderWatchedLib();
 }
 // Головна функція-обробник появи модального вікна
 async function onModalOpenClick(event) {
+  console.dir(document);
+
   event.preventDefault();
   bodyEl.classList.add('js-modal-open');
   // console.log('looks', event.target.closest('li'));
@@ -128,6 +137,7 @@ function numberConverter(number) {
 }
 
 function renderFilmCard(data) {
+  // console.log(data);
   let posterPath = '';
   const defaultImg = defaultPhoto;
 
@@ -210,9 +220,27 @@ function renderFilmCard(data) {
 
   modalContainerEl.innerHTML = markup;
 
-  const watchedModalBtnEl = document.querySelector('[data-modal-add]');
-  const queueModalBtnEl = document.querySelector('[data-modal-queue]');
+  const watchedModalBtnEl = document.querySelector('[data-modal] [data-modal-add]');
+  const queueModalBtnEl = document.querySelector('[data-modal] [data-modal-queue]');
 
   watchedModalBtnEl.addEventListener('click', onWatchedModalBtnClick);
   queueModalBtnEl.addEventListener('click', onQueueModalBtnClick);
+
+  const filmID = data.id;
+  console.log(filmID);
+  const isWatched = watchedParsedList.find(({ id }) => id === filmID);
+  console.log(watchedModalBtnEl);
+    if (!isWatched) {
+      watchedModalBtnEl.textContent = 'Add to watched';
+    } else {
+      watchedModalBtnEl.textContent = 'Remove from watched';
+  }
+  
+  const isQueue = queueParsedList.find(({id}) => id === filmID);
+    
+    if (!isQueue) {
+      queueModalBtnEl.textContent = 'Add to queue';
+    } else {
+      queueModalBtnEl.textContent = 'Remove from queue';
+  }
 }

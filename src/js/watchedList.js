@@ -8,13 +8,17 @@ refs.btnHeaderWatchedEl.addEventListener('click', onBtnHeaderWatchedClick);
 // console.log('r', refs.btnHeaderWatchedEl);
 
 function onBtnHeaderWatchedClick() {
+  rerenderWatchedLib();
+  //   markupFilmCard(watchedParsedList);
+}
+
+export function rerenderWatchedLib() {
   let watchedSavedList = localStorage.getItem('watchedList');
   const watchedParsedList = JSON.parse(watchedSavedList) || [];
-  console.log('m', watchedParsedList);
+  // console.log('m', watchedParsedList);
   if (!watchedParsedList) {
     refs.myLibraryGalleryEl.innerHTML = 'Opps... nothing here';
     return;
   }
   refs.myLibraryGalleryEl.innerHTML = markupFilmCard(watchedParsedList);
-  //   markupFilmCard(watchedParsedList);
 }
