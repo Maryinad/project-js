@@ -4,6 +4,8 @@ import { FilmAPI } from './filmApi';
 import Notiflix from 'notiflix';
 import { refs } from './refs.js';
 import { markupFilmCardHome } from './filmCardMarkUpHome';
+import popcornImgPath from '../images/popcorn.svg-min.png';
+
 
 const headerFormEl = document.querySelector('.header__form');
 // console.log('look', headerFormEl);
@@ -16,9 +18,9 @@ const filmApi = new FilmAPI();
 
 headerFormEl.addEventListener('submit', onSearchClick);
 
-// function renderDefaultPhoto() {
-//   return '<img src="./images/popcorn.svg-min.png" alt="popcorn picture" width="600">';
-// }
+function renderDefaultPhoto() {
+  return `<img src="${popcornImgPath}" alt="popcorn picture" width="150">`;
+}
 
 async function onSearchClick(event) {
   event.preventDefault();
@@ -42,9 +44,9 @@ async function onSearchClick(event) {
     if (data.total_results === 0) {
       Notiflix.Loading.remove(300);
       searchFieldMessage.textContent = '';
-      // const def = renderDefaultPhoto();
-      // refs.galleryCardLibraryEl.innerHTML = def;
-      refs.galleryCardLibraryEl.innerHTML = '';
+      const def = renderDefaultPhoto();
+      refs.galleryCardLibraryEl.innerHTML = def;
+      // refs.galleryCardLibraryEl.innerHTML = '';
       headerWarningMessage.textContent = `Search result not successful. Enter the correct movie name and `;
       return;
 

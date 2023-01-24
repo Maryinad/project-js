@@ -1,5 +1,5 @@
 import { FilmAPI } from './filmApi.js';
-import { markupFilmCardHome } from './filmCardMarkUpHome.js'; 
+import { markupFilmCardHome } from './filmCardMarkUpHome.js';
 import { refs } from './refs.js';
 
 const filmApi = new FilmAPI();
@@ -10,7 +10,10 @@ filmApi
   .then(async response => {
     // console.log('response', response.data.results);
     const genresArray = await filmApi.getGenresList();
-    refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(response.data.results, genresArray);
+    refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(
+      response.data.results,
+      genresArray
+    );
   })
   .catch(err => {
     console.log(err);
