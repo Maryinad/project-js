@@ -8,6 +8,7 @@ import { onWatchedModalBtnClick } from './local_storage';
 import { onQueueModalBtnClick } from './local_storage';
 import { watchedParsedList } from './local_storage';
 import { queueParsedList } from './local_storage';
+import { refs } from './refs.js';
 
 // import { numberConverter } from './prepare-number';
 // import * as basicLightbox from 'basiclightbox';
@@ -61,8 +62,15 @@ function onModalCloseClick() {
       backgroundColor: 'rgba(0,0,0,8 )',
       svgColor: '#ff6b08',
     });
-    rerenderWatchedLib();
-    rerenderQueueLib();
+    const watchedModalBtnEl = document.querySelector(
+    '[data-modal] [data-modal-add]'
+    );
+    if (watchedModalBtnEl.classList.contains("is-active")) {
+      rerenderWatchedLib();
+    } else {
+      rerenderQueueLib();
+    }   
+    
     Notiflix.Loading.remove();
   }
 }
@@ -214,7 +222,7 @@ function renderFilmCard(data) {
       </button>
       <button
         type="button"
-        class="modal__button modal__button-border btn btn-secondary"
+        class="modal__button modal__button-border btn"
         data-modal-queue
       >
         add to queue

@@ -8,6 +8,7 @@ const watchedParsedList = JSON.parse(watchedSavedList) || [];
 
 if (window.location.pathname === '/library.html') {
   refs.btnHeaderWatchedEl.addEventListener('click', onBtnHeaderWatchedClick);
+  rerenderWatchedLib();
 }
 
 function onBtnHeaderWatchedClick() {

@@ -24,7 +24,9 @@ export const onPaginationBtnClick = e => {
 
 filmApi.page = 1;
 filmApi.fetchTrendingFilms().then(response => {
-  console.log('response', response.data.results);
+  // console.log('response', response.data.results);
+  // console.log(refs);
+  refs.galleryCardLibraryEl = document.querySelector('.js-card-library');
   refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(
     response.data.results
   );
@@ -42,7 +44,7 @@ filmApi.fetchTrendingFilms().then(response => {
       currentPage:
         '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
       moveButton: ({ type }) => {
-        console.log(type);
+        // console.log(type);
 
         if (type === 'first') {
           return (
@@ -77,7 +79,7 @@ filmApi.fetchTrendingFilms().then(response => {
         }
       },
       disabledMoveButton: ({ type }) => {
-        console.log(type);
+        // console.log(type);
 
         if (type === 'first') {
           return (
