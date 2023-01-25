@@ -2,16 +2,16 @@ import { markupFilmCardLibrary } from './filmCardMarkUpLibrary';
 import { refs } from './refs.js';
 import popcornImgPath from '../images/popcorn.svg-min.png';
 
-let watchedSavedList = localStorage.getItem('watchedList');
-const watchedParsedList = JSON.parse(watchedSavedList) || [];
-// refs.myLibraryGalleryEl.innerHTML = markupFilmCard(watchedParsedList);
+// let watchedSavedList = localStorage.getItem('watchedList');
+// const watchedParsedList = JSON.parse(watchedSavedList) || [];
 
 if (window.location.pathname === '/library.html') {
-  refs.btnHeaderWatchedEl.addEventListener('click', onBtnHeaderWatchedClick);
+  refs.btnHeaderWatchedEl.classList.add("is-active");
+  refs.btnHeaderWatchedEl.addEventListener('click', onBtnHeaderWatchedClick);  
   rerenderWatchedLib();
 }
 
-function onBtnHeaderWatchedClick() {
+function onBtnHeaderWatchedClick() {  
   rerenderWatchedLib();
 }
 

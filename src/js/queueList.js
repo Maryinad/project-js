@@ -8,6 +8,7 @@ if (window.location.pathname === '/library.html') {
 }
 
 function onBtnQueueClick() {
+  refs.btnHeaderQueueEl.classList.add("is-active");
   rerenderQueueLib();
 }
 
