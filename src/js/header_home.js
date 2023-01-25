@@ -5,6 +5,7 @@ import Notiflix from 'notiflix';
 import { refs } from './refs.js';
 import { markupFilmCardHome } from './filmCardMarkUpHome';
 import { pagination, onPaginationBtnClick } from './pagination.js';
+import popcornImgPath from '../images/popcorn.svg-min.png';
 
 const headerFormEl = document.querySelector('.header__form');
 // console.log('look', headerFormEl);
@@ -17,7 +18,11 @@ const filmApi = new FilmAPI();
 
 headerFormEl.addEventListener('submit', onSearchClick);
 
-function onSearchClick(event) {
+function renderDefaultPhoto() {
+  return `<img src="${popcornImgPath}" alt="popcorn picture" width="150">`;
+}
+
+async function onSearchClick(event) {
   event.preventDefault();
   filmApi.query = event.currentTarget.elements.searchQuery.value
     .trim()
@@ -49,22 +54,6 @@ function onSearchClick(event) {
         Notiflix.Loading.remove(2500);
 
         refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(data.results);
-
-        pagination.reset(data.total_results);
-        pagination.off('afterMove', onPaginationBtnClick);
-
-        pagination.on('afterMove', e => {
-          console.log(e.page);
-          filmApi.page = e.page;
-
-          filmApi.fetchFilmsByQuery().then(response => {
-            console.log('response', response.data.results);
-            refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(
-              response.data.results
-            );
-            //pagination.setTotalItems(response.data.total_results);
-          });
-        });
       }
     })
     .catch(err => {
