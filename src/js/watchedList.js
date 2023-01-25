@@ -4,7 +4,7 @@ import popcornImgPath from '../images/popcorn.svg-min.png';
 
 let watchedSavedList = localStorage.getItem('watchedList');
 const watchedParsedList = JSON.parse(watchedSavedList) || [];
-refs.myLibraryGalleryEl.innerHTML = markupFilmCard(watchedParsedList);
+// refs.myLibraryGalleryEl.innerHTML = markupFilmCard(watchedParsedList);
 
 if (window.location.pathname === '/library.html') {
   refs.btnHeaderWatchedEl.addEventListener('click', onBtnHeaderWatchedClick);
@@ -19,7 +19,6 @@ export function rerenderWatchedLib() {
   const watchedParsedList = JSON.parse(watchedSavedList) || [];
 
   if (watchedParsedList.length === 0) {
-    
     refs.myLibraryGalleryEl.innerHTML = renderDefaultWatchedNotification();
     console.log('ul', refs.myLibraryGalleryEl);
     return;

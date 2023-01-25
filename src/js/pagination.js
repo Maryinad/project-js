@@ -139,7 +139,7 @@ filmApi.fetchTrendingFilms().then(response => {
       //   '</a>',
     },
   };
-
+  console.log(container);
   pagination = new Pagination(container, options);
 
   console.log(pagination);

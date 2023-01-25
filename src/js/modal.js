@@ -57,8 +57,13 @@ function onModalCloseClick() {
   window.removeEventListener('keydown', onEscBtnClick);
 
   if (window.location.pathname === '/library.html') {
+    Notiflix.Loading.pulse({
+      backgroundColor: 'rgba(0,0,0,8 )',
+      svgColor: '#ff6b08',
+    });
     rerenderWatchedLib();
     rerenderQueueLib();
+    Notiflix.Loading.remove();
   }
 }
 // Головна функція-обробник появи модального вікна
@@ -76,7 +81,6 @@ async function onModalOpenClick(event) {
 
     const selectedFilm = event.target.closest('li');
     const FilmID = selectedFilm.dataset.id;
-    
 
     Notiflix.Loading.pulse({
       backgroundColor: 'rgba(0,0,0,8 )',
@@ -88,7 +92,7 @@ async function onModalOpenClick(event) {
     renderFilmCard(data);
     localStorage.setItem('dataFilm', JSON.stringify(data));
 
-    Notiflix.Loading.remove(1000);
+    Notiflix.Loading.remove();
   }
 }
 
@@ -221,8 +225,12 @@ function renderFilmCard(data) {
 
   modalContainerEl.innerHTML = markup;
 
-  const watchedModalBtnEl = document.querySelector('[data-modal] [data-modal-add]');
-  const queueModalBtnEl = document.querySelector('[data-modal] [data-modal-queue]');
+  const watchedModalBtnEl = document.querySelector(
+    '[data-modal] [data-modal-add]'
+  );
+  const queueModalBtnEl = document.querySelector(
+    '[data-modal] [data-modal-queue]'
+  );
 
   watchedModalBtnEl.addEventListener('click', onWatchedModalBtnClick);
   queueModalBtnEl.addEventListener('click', onQueueModalBtnClick);
@@ -236,9 +244,9 @@ function renderFilmCard(data) {
   } else {
     watchedModalBtnEl.textContent = 'Remove from watched';
   }
-  
-  const isQueue = queueParsedList.find(({id}) => id === filmID);
-    
+
+  const isQueue = queueParsedList.find(({ id }) => id === filmID);
+
   // queueModalBtnEl.textContent = !isQueue ? 'Add to queue' : 'Remove from queue';
   if (!isQueue) {
     queueModalBtnEl.textContent = 'Add to queue';
