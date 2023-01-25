@@ -62,14 +62,13 @@ function onModalCloseClick() {
       backgroundColor: 'rgba(0,0,0,8 )',
       svgColor: '#ff6b08',
     });
-    const watchedModalBtnEl = document.querySelector(
-    '[data-modal] [data-modal-add]'
-    );
-    if (watchedModalBtnEl.classList.contains("is-active")) {
+    
+    if (refs.btnHeaderWatchedEl.classList.contains("btn-active")) {
       rerenderWatchedLib();
-    } else {
+    }
+    if (refs.btnHeaderQueueEl.classList.contains("btn-active")) {
       rerenderQueueLib();
-    }   
+    }
     
     Notiflix.Loading.remove();
   }
@@ -215,14 +214,14 @@ function renderFilmCard(data) {
     <div class="modal__button-block">
         <button
         type="button"
-        class="modal__button btn modal__button-full button"
+        class="modal__button btn btn-primary modal__button-full button"
         data-modal-add
       >
         add to watched
       </button>
       <button
         type="button"
-        class="modal__button modal__button-border btn"
+        class="modal__button btn btn-primary modal__button-border"
         data-modal-queue
       >
         add to queue
