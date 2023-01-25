@@ -86,10 +86,10 @@ async function onSearchClick(event) {
           console.log(e.page);
           filmApi.page = e.page;
 
-          filmApi.fetchFilmsByQuery().then(response => {
-            console.log('response', response.data.results);
+          filmApi.fetchFilmsByQuery().then(data => {
+            // console.log('response', response.data.results);
             refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(
-              response.data.results
+              data.results
             );
             //pagination.setTotalItems(response.data.total_results);
           });
