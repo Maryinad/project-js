@@ -12,7 +12,14 @@ const container = document.querySelector('#pagination');
 export const onPaginationBtnClick = e => {
   console.log(e.page);
   filmApi.page = e.page;
-
+  if (filmApi.query !== null) {
+    filmApi.fetchFilmsByQuery().then(response => {
+      console.log('response', response.data.results);
+      refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(
+        response.data.results
+      );
+    });
+  }
   filmApi.fetchTrendingFilms().then(response => {
     console.log('response', response.data.results);
     refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(
