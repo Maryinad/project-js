@@ -8,11 +8,19 @@ if (window.location.pathname === '/library.html') {
 }
 
 function onBtnQueueClick() {
-  refs.btnHeaderQueueEl.classList.add("is-active");
+  // refs.btnHeaderWatchedEl.classList.remove("btn-active");
+  // refs.btnHeaderWatchedEl.classList.add("btn-header");
+  if (refs.btnHeaderWatchedEl.classList.contains("btn-active")) {
+    refs.btnHeaderWatchedEl.classList.replace("btn-active","btn-header");
+  }
+  refs.btnHeaderQueueEl.classList.replace("btn-header","btn-active");  
   rerenderQueueLib();
 }
 
 export function rerenderQueueLib() {
+  // if (!refs.btnHeaderWatchedEl.classList.contains("btn-active")) {
+  //   refs.btnHeaderWatchedEl.classList.replace("btn-header", "btn-active");
+  // }
   let queueSavedList = localStorage.getItem('queueList');
   const queueParsedList = JSON.parse(queueSavedList) || [];
 

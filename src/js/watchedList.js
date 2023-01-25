@@ -6,12 +6,17 @@ import popcornImgPath from '../images/popcorn.svg-min.png';
 // const watchedParsedList = JSON.parse(watchedSavedList) || [];
 
 if (window.location.pathname === '/library.html') {
-  refs.btnHeaderWatchedEl.classList.add("is-active");
+  if (!refs.btnHeaderWatchedEl.classList.contains("btn-active")) {
+     refs.btnHeaderWatchedEl.classList.replace("btn-header","btn-active");
+  }
   refs.btnHeaderWatchedEl.addEventListener('click', onBtnHeaderWatchedClick);  
   rerenderWatchedLib();
 }
 
-function onBtnHeaderWatchedClick() {  
+function onBtnHeaderWatchedClick() {
+  if (refs.btnHeaderQueueEl.classList.contains("btn-active")) {
+    refs.btnHeaderQueueEl.classList.replace("btn-active","btn-header");
+  }  
   rerenderWatchedLib();
 }
 
