@@ -142,7 +142,7 @@ filmApi.fetchTrendingFilms().then(response => {
       // `<img src="${arrowLeft}" class="arrow tui-ico-{{type}}" alt="arrow next" />` +
       // '</span>',
       moreButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+        '<a href="#" class="tui-page-btn mobile-hidden tui-{{type}}-is-ellip">' +
         '<span class="tui-ico-ellip dots">...</span>' +
         '</a>',
     },
