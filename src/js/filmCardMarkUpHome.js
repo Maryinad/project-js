@@ -1,6 +1,6 @@
 import defaultPhoto from '../images/default-photo.jpeg';
-
-export const markupFilmCardHome = function (array, genresArray = []) {
+import { genresArray } from './genresArray';
+export const markupFilmCardHome = function (array) {
   return array
     .map(film => {
       const {
@@ -12,7 +12,7 @@ export const markupFilmCardHome = function (array, genresArray = []) {
         vote_average,
         backdrop_path,
       } = film;
-
+      // console.log(genresArray);
       const genres = genre_ids.map(genre_id => {
         const elem = genresArray.find(el => el.id === genre_id) || {};
 
@@ -51,6 +51,10 @@ export const markupFilmCardHome = function (array, genresArray = []) {
         return titleShow;
       }
 
+      let line = "|";
+      if (filmGenres === ''){
+        line = "";
+      }
       return `  
     <li class="card-library__item" data-id="${id}">
       <img class="card-library__photo" src="${posterPath}" alt=${sliceTitle(
@@ -60,7 +64,7 @@ export const markupFilmCardHome = function (array, genresArray = []) {
         <h3 class="card-library__title">${sliceTitle(original_title)}</h3>
         <div class="card-library__info">
           <p class="card-library__text">
-            ${filmGenres} | <span class="card-library__year">${release_date.slice(
+            ${filmGenres} <span class="card-library__line">${line}</span> <span class="card-library__year">${release_date.slice(
         0,
         4
       )}</span>

@@ -8,6 +8,7 @@ import { onWatchedModalBtnClick } from './local_storage';
 import { onQueueModalBtnClick } from './local_storage';
 import { watchedParsedList } from './local_storage';
 import { queueParsedList } from './local_storage';
+import { refs } from './refs.js';
 
 // import { numberConverter } from './prepare-number';
 // import * as basicLightbox from 'basiclightbox';
@@ -61,8 +62,14 @@ function onModalCloseClick() {
       backgroundColor: 'rgba(0,0,0,8 )',
       svgColor: '#ff6b08',
     });
-    rerenderWatchedLib();
-    rerenderQueueLib();
+    
+    if (refs.btnHeaderWatchedEl.classList.contains("btn-active")) {
+      rerenderWatchedLib();
+    }
+    if (refs.btnHeaderQueueEl.classList.contains("btn-active")) {
+      rerenderQueueLib();
+    }
+    
     Notiflix.Loading.remove();
   }
 }
@@ -207,14 +214,14 @@ function renderFilmCard(data) {
     <div class="modal__button-block">
         <button
         type="button"
-        class="modal__button btn modal__button-full button"
+        class="modal__button btn btn-primary modal__button-full button"
         data-modal-add
       >
         add to watched
       </button>
       <button
         type="button"
-        class="modal__button modal__button-border btn btn-secondary"
+        class="modal__button btn btn-primary modal__button-border"
         data-modal-queue
       >
         add to queue

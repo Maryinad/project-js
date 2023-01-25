@@ -1,6 +1,7 @@
 import './js/filmApi';
 import './js/refs';
 import './js/header_my_library';
+import './js/dark_light';
 import './js/filmCardMarkUpHome';
 import './js/filmCardMarkUpLibrary';
 import './js/watchedList';
@@ -10,4 +11,4 @@ import './js/footer';
 import './js/modal';
 import './js/modal_team';
 import './js/sticky_button';
-import './js/pagination';
+// import './js/pagination';

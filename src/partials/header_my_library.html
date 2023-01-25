@@ -22,7 +22,7 @@
     <div class="filter__list header__button-block">
       <button
         type="button"
-        class="header__button btn modal__button-full button js-header__btn-watched"
+        class="js-header__btn-watched btn btn-header header__btn"
         data-modal-add
       >
         Watched
@@ -30,12 +30,23 @@
 
       <button
         type="button"
-        class="header__button modal__button-border btn btn-secondary header__btn js-header__btn-queue"
+        class="js-header__btn-queue btn btn-header header__btn"
         data-modal-
         queue
       >
         Queue
       </button>
+    </div>
+    <div class="container1">
+      <svg class="sun-svg" width="30" height="30">
+        <use href="./images/global-icons/symbol-defs.svg#icon-sun"></use>
+      </svg>
+      <div class="toggle-container1">
+        <input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
+      </div>
+      <svg class="moon-svg" width="30" height="30">
+        <use href="./images/global-icons/symbol-defs.svg#icon-moon"></use>
+      </svg>
     </div>
   </div>
 </header>

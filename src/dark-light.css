@@ -1,40 +1,34 @@
 html {
   height: 100%;
 
-  /* display: grid;
-    align-items: center;
-    justify-items: center; */
-
   --bg: #fcfcfc;
   --bg-panel: #ebebeb;
-  --color-headings: #0077ff;
-  --color-text: #333333;
+  --color-headings: #e3e7ec;
+  --color-text: #000;
+  --footer-bg-color: #f7f7f7;
 }
 
 html[data-theme='dark'] {
   --bg: #333333;
-  --bg-panel: #434343;
-  --color-headings: #3694ff;
+  --bg-panel: #73709e;
+  --color-headings: #dfe6ee;
   --color-text: #fff;
+  --footer-bg-color: rgb(247 247 247 / 60%);
 }
 
 body {
   background-color: var(--bg);
 }
 
-p,
-span {
-  color: var(--color-text);
-}
-
 .container1 {
   background-color: transparent;
-  display: grid;
-  grid-template-columns: 100% auto;
-  grid-template-rows: auto auto;
-  grid-template-areas:
-    'title switch'
-    'content content';
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+
+  position: absolute;
+  bottom: 40;
+  right: 170;
 }
 
 input[type='checkbox'] {
@@ -86,3 +80,16 @@ html.transition *:after {
   transition: all 750ms !important;
   transition-delay: 0 !important;
 }
+
+.sun-svg{
+  fill: rgb(250, 247, 95);
+}
+
+.moon-svg {
+  fill: rgb(248, 246, 246);
+}
+
+.card-library__title{
+  color: var(--color-text);
+}
+

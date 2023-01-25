@@ -70,8 +70,9 @@ async function onSearchClick(event) {
       if (data.total_results === 0) {
         Notiflix.Loading.remove(300);
         searchFieldMessage.textContent = '';
-        refs.galleryCardLibraryEl.innerHTML = '';
-        headerWarningMessage.textContent = `Search result not successful. Enter the correct movie name and `;
+        // refs.galleryCardLibraryEl.innerHTML = '';
+        refs.galleryCardLibraryEl.innerHTML = renderDefaultPhoto();
+        headerWarningMessage.textContent = `Search result not successful. Enter the correct movie name`;
         return;
       } else {
         Notiflix.Loading.remove(2500);
