@@ -47,7 +47,8 @@ filmApi.fetchTrendingFilms().then(response => {
         if (type === 'first') {
           return (
             '<div class="custom-page-btn">' +
-            '<span class="custom-ico"><--</span>' +
+            `<img src="${arrowLeft}" class="arrow tui-ico-{{type}}" alt="arrow next" />` +
+            // '<span class="custom-ico"><--</span>' +
             '</div>'
           );
         }
@@ -55,7 +56,8 @@ filmApi.fetchTrendingFilms().then(response => {
         if (type === 'prev') {
           return (
             '<div class="custom-page-btn">' +
-            '<span class="custom-ico"><-</span>' +
+            `<img src="${arrowLeft}" class="arrow tui-ico-{{type}}" alt="arrow next" />` +
+            // '<span class="custom-ico"><-</span>' +
             '</div>'
           );
         }
@@ -63,7 +65,8 @@ filmApi.fetchTrendingFilms().then(response => {
         if (type === 'next') {
           return (
             '<div class="custom-page-btn">' +
-            '<span class="custom-ico">-></span>' +
+            `<img src="${arrowLeft}" class="arrow next tui-ico-{{type}}" alt="arrow next" />` +
+            // '<span class="custom-ico">-></span>' +
             '</div>'
           );
         }
@@ -71,7 +74,8 @@ filmApi.fetchTrendingFilms().then(response => {
         if (type === 'last') {
           return (
             '<div class="custom-page-btn">' +
-            '<span class="custom-ico">--></span>' +
+            `<img src="${arrowLeft}" class="arrow next tui-ico-{{type}}" alt="arrow next" />` +
+            // '<span class="custom-ico">--></span>' +
             '</div>'
           );
         }
@@ -82,7 +86,8 @@ filmApi.fetchTrendingFilms().then(response => {
         if (type === 'first') {
           return (
             '<div class="custom-page-btn">' +
-            '<span class="custom-ico"><--</span>' +
+            `<img src="${arrowLeft}" class="arrow is-hidden tui-ico-{{type}}" alt="arrow next" />` +
+            // '<span class="custom-ico"><--</span>' +
             '</div>'
           );
         }
@@ -90,7 +95,8 @@ filmApi.fetchTrendingFilms().then(response => {
         if (type === 'prev') {
           return (
             '<div class="custom-page-btn">' +
-            '<span class="custom-ico"><-</span>' +
+            `<img src="${arrowLeft}" class="arrow is-hidden tui-ico-{{type}}" alt="arrow next" />` +
+            // '<span class="custom-ico"><-</span>' +
             '</div>'
           );
         }
@@ -98,7 +104,8 @@ filmApi.fetchTrendingFilms().then(response => {
         if (type === 'next') {
           return (
             '<div class="custom-page-btn">' +
-            '<span class="custom-ico">-></span>' +
+            `<img src="${arrowLeft}" class="arrow next is-hidden tui-ico-{{type}}" alt="arrow next" />` +
+            // '<span class="custom-ico">-></span>' +
             '</div>'
           );
         }
@@ -106,7 +113,8 @@ filmApi.fetchTrendingFilms().then(response => {
         if (type === 'last') {
           return (
             '<div class="custom-page-btn">' +
-            '<span class="custom-ico">--></span>' +
+            `<img src="${arrowLeft}" class="arrow next is-hidden tui-ico-{{type}}" alt="arrow next" />` +
+            // '<span class="custom-ico">--></span>' +
             '</div>'
           );
         }
@@ -133,13 +141,13 @@ filmApi.fetchTrendingFilms().then(response => {
       // // '<span class="tui-ico-{{type}}"></span>' +
       // `<img src="${arrowLeft}" class="arrow tui-ico-{{type}}" alt="arrow next" />` +
       // '</span>',
-      // moreButton:
-      //   '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      //   '<span class="tui-ico-ellip dots">...</span>' +
-      //   '</a>',
+      moreButton:
+        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+        '<span class="tui-ico-ellip dots">...</span>' +
+        '</a>',
     },
   };
-  console.log(container);
+  // console.log(container);
   pagination = new Pagination(container, options);
 
   console.log(pagination);
