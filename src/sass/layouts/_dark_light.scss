@@ -7,14 +7,14 @@ html {
 
   --bg: #fcfcfc;
   --bg-panel: #ebebeb;
-  --color-headings: #0077ff;
+  --color-headings: var(--active-btn-color);
   --color-text: #333333;
 }
 
 html[data-theme='dark'] {
   --bg: #333333;
   --bg-panel: #434343;
-  --color-headings: #3694ff;
+  --color-headings: rgba(255, 107, 1, 0.6);
   --color-text: #fff;
 }
 
