@@ -10,8 +10,7 @@ checkbox.addEventListener('change', function() {
         trans()
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('data-theme', 'light');
-    }
-    
+    }    
 })
 
 let trans = () => {
@@ -20,8 +19,5 @@ let trans = () => {
         document.documentElement.classList.remove('transition')
     }, 1000)
 }
-
-
-
 
 document.documentElement.setAttribute('data-theme', localStorage.getItem('data-theme'));
