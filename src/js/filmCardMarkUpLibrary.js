@@ -39,6 +39,11 @@ export const markupFilmCardLibrary = function (array) {
         }
         return filmGenres;
       }
+      console.log(array.length);
+      let line = "|";
+      if (genreStr.length === 0){
+        line = "";
+      }
 
       return `  
     <li class="card-library__item" data-id="${id}">
@@ -47,7 +52,7 @@ export const markupFilmCardLibrary = function (array) {
         <h3 class="card-library__title">${original_title}</h3>
         <div class="card-library__info">
           <p class="card-library__text">
-            ${genreStr} | <span class="card-library__year">${release_date.slice(
+            ${genreStr} <span class="card-library__line">${line}</span> <span class="card-library__year">${release_date.slice(
         0,
         4
       )}</span>
