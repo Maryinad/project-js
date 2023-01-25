@@ -41,6 +41,29 @@ async function onSearchClick(event) {
     svgColor: '#ff6b08',
   });
 
+  //   filmApi
+  //     .fetchFilmsByQuery()
+  //     .then(data => {
+  //       if (data.total_results === 0) {
+  //         Notiflix.Loading.remove(300);
+  //         searchFieldMessage.textContent = '';
+  //         refs.galleryCardLibraryEl.innerHTML = '';
+  //         headerWarningMessage.textContent = `Search result not successful. Enter the correct movie name and `;
+  //         return;
+  //       } else {
+  //         Notiflix.Loading.remove(2500);
+
+  //         refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(data.results);
+  //       }
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  //   event.currentTarget.elements.searchQuery.value = '';
+  //   searchFieldMessage.textContent = '';
+  //   headerWarningMessage.textContent = '';
+  // }
+
   filmApi
     .fetchFilmsByQuery()
     .then(data => {
@@ -55,6 +78,22 @@ async function onSearchClick(event) {
         Notiflix.Loading.remove(2500);
 
         refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(data.results);
+
+        pagination.reset(data.total_results);
+        pagination.off('afterMove', onPaginationBtnClick);
+
+        pagination.on('afterMove', e => {
+          console.log(e.page);
+          filmApi.page = e.page;
+
+          filmApi.fetchFilmsByQuery().then(response => {
+            console.log('response', response.data.results);
+            refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(
+              response.data.results
+            );
+            //pagination.setTotalItems(response.data.total_results);
+          });
+        });
       }
     })
     .catch(err => {
