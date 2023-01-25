@@ -1,7 +1,6 @@
 'use strict';
 
 import axios from 'axios';
-import { pagination } from './paginationInit';
 
 export class FilmAPI {
   static BASE_URL = 'http://api.themoviedb.org/3/';
@@ -60,7 +59,7 @@ export class FilmAPI {
     };
     const response = await axios.get(`${FilmAPI.BASE_URL}search/movie`, params);
     // console.log(response.data);
-    pagination.setTotalItems(response.data.total_items);
+   // pagination.setTotalItems(response.data.total_items);
     return response.data;
   }
 

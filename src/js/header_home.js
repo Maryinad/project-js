@@ -4,8 +4,8 @@ import { FilmAPI } from './filmApi';
 import Notiflix from 'notiflix';
 import { refs } from './refs.js';
 import { markupFilmCardHome } from './filmCardMarkUpHome';
+import { pagination, onPaginationBtnClick } from './pagination.js';
 import popcornImgPath from '../images/popcorn.svg-min.png';
-
 
 const headerFormEl = document.querySelector('.header__form');
 // console.log('look', headerFormEl);
@@ -27,6 +27,7 @@ async function onSearchClick(event) {
   filmApi.query = event.currentTarget.elements.searchQuery.value
     .trim()
     .toLowerCase();
+  filmApi.page = 1;
 
   if (filmApi.query === '') {
     searchFieldMessage.textContent = '';
@@ -40,30 +41,25 @@ async function onSearchClick(event) {
     svgColor: '#ff6b08',
   });
 
-  filmApi.fetchFilmsByQuery().then(async data => {
-    if (data.total_results === 0) {
-      Notiflix.Loading.remove(300);
-      searchFieldMessage.textContent = '';
-      const def = renderDefaultPhoto();
-      refs.galleryCardLibraryEl.innerHTML = def;
-      // refs.galleryCardLibraryEl.innerHTML = '';
-      headerWarningMessage.textContent = `Search result not successful. Enter the correct movie name and `;
-      return;
+  filmApi
+    .fetchFilmsByQuery()
+    .then(data => {
+      if (data.total_results === 0) {
+        Notiflix.Loading.remove(300);
+        searchFieldMessage.textContent = '';
+        refs.galleryCardLibraryEl.innerHTML = '';
+        headerWarningMessage.textContent = `Search result not successful. Enter the correct movie name and `;
+        return;
+      } else {
+        Notiflix.Loading.remove(2500);
 
-    } else {
-      Notiflix.Loading.remove(2500);
-      
-      const genresArray = await filmApi.getGenresList();
-      refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(data.results,genresArray);
-    }
-    
-  }).catch(err => {
-    console.log(err);
-  });
-      event.currentTarget.elements.searchQuery.value = '';
-      searchFieldMessage.textContent = '';
-      headerWarningMessage.textContent = '';
-  
+        refs.galleryCardLibraryEl.innerHTML = markupFilmCardHome(data.results);
+      }
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  event.currentTarget.elements.searchQuery.value = '';
+  searchFieldMessage.textContent = '';
+  headerWarningMessage.textContent = '';
 }
-
-
