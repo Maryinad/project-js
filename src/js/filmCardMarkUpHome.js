@@ -12,7 +12,7 @@ export const markupFilmCardHome = function (array) {
         vote_average,
         backdrop_path,
       } = film;
-      console.log(genresArray);
+      // console.log(genresArray);
       const genres = genre_ids.map(genre_id => {
         const elem = genresArray.find(el => el.id === genre_id) || {};
 

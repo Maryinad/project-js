@@ -44,7 +44,7 @@ filmApi.fetchTrendingFilms().then(response => {
       currentPage:
         '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
       moveButton: ({ type }) => {
-        console.log(type);
+        // console.log(type);
 
         if (type === 'first') {
           return (
@@ -79,7 +79,7 @@ filmApi.fetchTrendingFilms().then(response => {
         }
       },
       disabledMoveButton: ({ type }) => {
-        console.log(type);
+        // console.log(type);
 
         if (type === 'first') {
           return (

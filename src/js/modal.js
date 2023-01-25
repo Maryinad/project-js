@@ -222,7 +222,7 @@ function renderFilmCard(data) {
       </button>
       <button
         type="button"
-        class="modal__button modal__button-border btn btn-secondary"
+        class="modal__button modal__button-border btn"
         data-modal-queue
       >
         add to queue
