@@ -5,6 +5,7 @@ html {
   --bg-panel: #ebebeb;
   --color-headings: #e3e7ec;
   --color-text: #000;
+  --footer-bg-color: #f7f7f7;
 }
 
 html[data-theme='dark'] {
@@ -12,6 +13,7 @@ html[data-theme='dark'] {
   --bg-panel: #73709e;
   --color-headings: #dfe6ee;
   --color-text: #fff;
+  --footer-bg-color: rgb(247 247 247 / 60%);
 }
 
 body {
