@@ -1,6 +1,6 @@
 import defaultPhoto from '../images/default-photo.jpeg';
-
-export const markupFilmCardHome = function (array, genresArray = []) {
+import { genresArray } from './genresArray';
+export const markupFilmCardHome = function (array) {
   return array
     .map(film => {
       const {
@@ -12,7 +12,7 @@ export const markupFilmCardHome = function (array, genresArray = []) {
         vote_average,
         backdrop_path,
       } = film;
-
+      console.log(genresArray);
       const genres = genre_ids.map(genre_id => {
         const elem = genresArray.find(el => el.id === genre_id) || {};
 
