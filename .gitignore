@@ -3,6 +3,8 @@
 .vscode/
 .idea/
 
+dist/
+.parcel-cache/
 # Logs
 logs
 *.log
