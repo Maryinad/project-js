@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 export class FilmAPI {
-  static BASE_URL = 'http://api.themoviedb.org/3/';
+  static BASE_URL = 'https://api.themoviedb.org/3/';
   static API_KEY = 'a1c58729dd9d07a228419b3d2b553cbb';
   static GENRES_LIST = 'genre/movie/list';
 
@@ -59,7 +59,7 @@ export class FilmAPI {
     };
     const response = await axios.get(`${FilmAPI.BASE_URL}search/movie`, params);
     // console.log(response.data);
-   // pagination.setTotalItems(response.data.total_items);
+    // pagination.setTotalItems(response.data.total_items);
     return response.data;
   }
 
